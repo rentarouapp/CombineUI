@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel: SearchGithubRepositoriesViewModel = SearchGithubRepositoriesViewModel()
+    @State private var searchText: String = "SwiftUI"
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            TextField("検索したい言葉", text: self.$searchText)
+            Button("更新", action: {
+                self.viewModel.searchButtonTapped(searchWord: self.searchText)
+            })
+            Text(self.viewModel.repositories.first?.fullName ?? "Hello, world!")
         }
         .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
