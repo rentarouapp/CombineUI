@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 class SearchGithubRepositoriesViewModel: ObservableObject {
-    private let githubApiClient: GithubAPIClientProtocl
+    private let githubApiClient: GithubAPIClientProtocol
     private var cancellables = Set<AnyCancellable>()
 
     @Published var repositories = [GHItem]()
 
-    init(githubApiClient: GithubAPIClientProtocl = GithubAPIClient.shared) {
+    init(githubApiClient: GithubAPIClientProtocol = GithubAPIClient.shared) {
         self.githubApiClient = githubApiClient
     }
 
